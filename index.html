@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            TODO
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#F1f1f1"/>
+        <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+        <link rel="manifest" href="manifest.webmanifest">
+    </head>
+    <body>
+        <header contenteditable="true"> TODO APP</header>
+        
+        <main>
+            <div id="root"></div>
+        </main>
+        <!-- <div id='center'>
+            <div id='modal-root'></div>
+        </div> -->
+    </body>
+    <script src="dpoly.js"></script>
+    <script src="index.js"></script>
+    <script>
+        if('serviceWorker' in navigator) {
+            if (navigator.serviceWorker.controller) {
+    console.log('[PWA Builder] active service worker found, no need to register')
+    } else {
+
+    //Register the ServiceWorker
+    navigator.serviceWorker.register('sw.js', {
+        scope: './'
+    }).then(function(reg) {
+        console.log('Service worker has been registered for scope:'+ reg.scope);
+    });
+    }
+    }
+    </script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+        <!-- <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyCI-0gUf6_8jspx0uB_Uti_Z7hCLOLqMew",
+            authDomain: "todoapp-ae7e8.firebaseapp.com",
+            databaseURL: "https://todoapp-ae7e8.firebaseio.com",
+            projectId: "todoapp-ae7e8",
+            storageBucket: "todoapp-ae7e8.appspot.com",
+            messagingSenderId: "211905074724"
+          };
+          firebase.initializeApp(config);
+        </script> -->
+ </html>

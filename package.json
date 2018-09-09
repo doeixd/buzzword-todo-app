@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-eslint": "^9.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "base-64": "^0.1.0",
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mobx": "^5.0.3",
+    "mobx-react": "^5.2.5",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.2.13",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "rea": "^0.0.1",
+    "react": ">=15",
+    "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1",
+    "styled-jsx": "^3.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "cssnano": "^4.1.0",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}
