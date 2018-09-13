@@ -7,6 +7,7 @@
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mobx": "^5.0.3",
@@ -25,10 +26,32 @@
     "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "cssnano": "^4.1.0",
-    "eslint-plugin-react": "^7.11.1"
-  }
+    "eslint-plugin-react": "^7.11.1",
+    "parcel-bundler": "^1.9.7"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "todoapp",
+  "description": "now",
+  "version": "0.0.1",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doeixd/buzzword-todo-app.git"
+  },
+  "keywords": [
+    "todoapp"
+  ],
+  "author": "PWM Glenn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doeixd/buzzword-todo-app/issues"
+  },
+  "homepage": "https://github.com/doeixd/buzzword-todo-app#readme"
 }

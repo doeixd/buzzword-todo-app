@@ -1,5 +1,5 @@
 {
     "presets": ["env", "react"],
-  "plugins": ["transform-decorators-legacy","transform-class-properties","styled-jsx/babel"],
+  "plugins": ["transform-decorators-legacy","transform-class-properties","styled-jsx/babel","transform-object-rest-spread"],
 
 }

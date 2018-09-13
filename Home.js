@@ -8,7 +8,7 @@ import Header from './Header'
 import TodoList from './Todos'
 import Input from './Input'
 import Login from './Login'
-import store from './store'
+
 
 
 
@@ -17,6 +17,8 @@ export default class Home extends Component {
     constructor(props){
         super(props)
         localStorage.list ? this.props.store.todos = JSON.parse(localStorage.list) : null
+        document.querySelector('header').textContent = 'TODO APP'
+        console.log(this.props.store.localSignedIn)
         }
        
 

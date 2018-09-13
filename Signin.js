@@ -5,26 +5,97 @@ import {observer} from 'mobx-react'
 
 
 export default @observer class Signin extends Component {
-    constructor(){
-        super()
-        document.querySelector('header').textContent = 'Sign In'
-    }
-    render() {
-        return(
-            <div>
-                <input placeholder='username'></input>
-                <input placeholder='password'></input>
-                <button>Submit</button>
+  constructor(props){
+    super(props)
+    document.querySelector('header').textContent = 'Sign In'
+  }
 
-                <style jsx>{`
+  error() {
+    alert('')
+  }
+
+  login(e){
+    let password = document.getElementById('password').value
+    let username = document.getElementById('username').value
+        
+    if (username && password) {
+      fetch('/login',{
+        headers:{
+          'Content-Type':'application/json; charset=UTF-8'
+        },
+        method: 'POST',
+        body: JSON.stringify({'username':username,'password':password})
+      })
+        .then((res)  => res.json())
+        .then((res)=> {
+          if (res.message != 'Auth Failed') { 
+            document.cookie = `jwt=${res.token}`
+            this.props.store.signedIn = true
+            localStorage.signedIn = true
+            localStorage.user = res.username
+            window.location.href = '/' 
+          }else{
+            document.querySelector('header').textContent = 'AUTH FAILED' 
+          }
+        })
+
+                
+    
+    } else{ 
+      this.error()
+    }
+  }
+
+  register(e){
+    let password = document.getElementById('password').value
+    let username = document.getElementById('username').value
+        
+    if (username && password) {
+      fetch('/register',{
+        headers:{
+          'Content-Type':'application/json; charset=UTF-8'
+        },
+        method: 'POST',
+        body: JSON.stringify({'username':username,'password':password})
+      })
+        .then((res)  => res.json())
+        .then((res)=> {
+          if (res.message != 'TAKEN') { 
+            document.cookie = `jwt=${res.token}`
+            this.props.store.signedIn = true
+            window.location.href = '/' 
+          }else{
+            document.querySelector('header').textContent = 'USERNAME TAKEN' 
+          }
+        })
+    
+    } else{ 
+      this.error()
+    }
+  }
+
+  render() {
+    return(
+      <div>
+        <input placeholder='username' id='username'></input>
+        <input placeholder='password' id='password'></input>
+        <button onClick={e => this.login(e)}>Submit</button>
+        <button id='register' onClick={e => this.register(e)}>Register</button>
+
+        <style jsx>{`
+                    div{
+                        display:flex;
+                        flex-direction:column;
+                    }
+                    #register{
+                        background-image: linear-gradient(to right,#5a5a5a ,#020202);
+                        margin-top:15px;
+                    }
                     input {
                         height: 40px;
-                        margin-right: 25px;
                         border-radius: 5px;
                         border: 0px solid #cecece;
-                        /* border-bottom: 2px solid #b1b1b1; */
                         width: 265px;
-                        /* border-top: 1px solid #cccccc; */
                         box-shadow: 0px 2px 4px 1px #cacaca, 0 1px 3px 0 rgba(0, 0, 0, 0.3);
                         transition: .25s;
                         margin-bottom:5px;
@@ -40,28 +111,30 @@ export default @observer class Signin extends Component {
                     }
 
                     button {
-                        font-size: 17px;
-                        line-height: 27px;
-                        background-image: linear-gradient(to left, #03A9F4 , #0063ff);
+                        font-size: 22px;
+                        line-height: 34px;
+                        background-image: linear-gradient(to left,#3bbffb ,#0063ff);
                         color: white;
-                        padding: 0 20px;
+                        /* padding: 0 20px; */
                         border-radius: 27px;
                         font-family: 'Libre Franklin';
-                        font-weight:600;
-                        transition:.25s;
-                        border:none;
+                        font-weight: 600;
+                        -webkit-transition: .25s;
+                        transition: .25s;
+                        border: none;
+                        margin-top: 26px;
                     }
 
                     button:hover{
                         cursor:pointer;
-                        box-shadow:4px 5px 11px #bbbbbb, 0 0 63px -10px #666666;
+                        box-shadow:4px 5px 11px #bbbbbb, 0 0 53px -10px #666666;
                         transform: scale(1.02)
                     }
                     
                 `}</style>
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 

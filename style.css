@@ -79,6 +79,12 @@ header{
     left: 0px;
 } */
 
+a{
+    color:inherit;
+    text-decoration: none;
+
+}
+
 #signin {
     position: absolute;
     top: 25px;
