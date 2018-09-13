@@ -1,6 +1,6 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const cookieParser = require('cookie-parser')
 const app = express()
 const bodyParser = require('body-parser')
