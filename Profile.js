@@ -105,7 +105,7 @@ export default @observer class Profile extends Component {
 
 
 
-class Lists extends Component= (tom) => {
+const Lists = (tom) => {
   return (tom.list.map(itm => {
     <h3>{itm}</h3>
   }))
