@@ -35,7 +35,8 @@
     "parcel-bundler": "^1.9.7"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "parcel build index.html"
   },
   "name": "todoapp",
   "description": "now",
