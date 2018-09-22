@@ -8,12 +8,13 @@ import store from './store'
 import Home from './Home'
 import Signin from './Signin'
 import Profile from './Profile'
+import Top from './Top'
 
 const ProtectedRoute = ({ component: Component, store, ...rest }) => (
   <Route exact path='/profile' 
     {...rest}
     render={props =>
-      localStorage.signedIn ? (
+      window.sessionStorage.getItem('signedIn') ? (
         <Component store={store} />
       ) : (
         <Redirect
@@ -38,9 +39,11 @@ class App extends Component {
     return(
       <Router>
         <div>
-          <Route exact path="/" render={()=> <Home store={this.props.store} /> } />
+        <Top store={this.props.store}/>
+          <Route exact path="/" render={(props)=> <Home {...props} store={this.props.store} /> } />
           <Route exact path="/login" render={()=> <Signin store={this.props.store} /> } />
           <ProtectedRoute exact path='/profile' store={this.props.store} component={Profile} />
+          <Route exact path='/:user/:list' render={(props)=> <Home {...props} store={this.props.store} /> } />
         </div>
       </Router>
     )

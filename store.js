@@ -1,29 +1,85 @@
-import { observable, autorun } from 'mobx'
+import { observable, toJS, autorun } from 'mobx'
+import localforage from 'localforage'
 
 var store = observable({
   todos:[
-    {name: 'buy milk',
-      done: 'false',
+
+    {
+      name: 'buy milk',
+      done: "false",
     }
   ],
+    
 
-  signedIn: localStorage.signedIn ? true : false,
 
-  lists:[{name:'fart'}],
+  n: 0,
+
+  listName: 'TODO APP',
+
+  signedIn: window.sessionStorage.getItem('signedIn') ? true : false,
+
+  lists:[{name:'LOADING...',todos:[{name:'.'},{name:'.'},{name:'.'}]}],
 
   filter: false,
 
   filterd: [],
 
+  hydrate(user,list){
+    this.n = list
+    localforage.getItem('all', (err,val) => {
+      console.log(val)
+      // console.log(val[list].name)
+      this.todos = val[list].todos
+
+      this.listName = val[list].name
+      console.log(this.listName)
+      // document.querySelector('header').textContent = val[list].name
+      return 
+    })
+  },
+
   updateStorage() {
-    localStorage.list = JSON.stringify(this.todos)
-    console.log(JSON.stringify(this.todos))
+  
+    localforage.getItem('all').then(all =>{
+      all[this.n].todos = toJS(this.todos) 
+      console.log(all)
+      localforage.setItem(all[this.n].name,toJS(this.todos),()=>{return})
+      localforage.setItem('all',all,()=>{return})
+      this.lists = all
+    })
+    fetch('/update',{
+      headers:{
+        'Content-Type':'application/json; charset=UTF-8'
+      },
+      method: 'POST',
+      body: JSON.stringify({'lists': this.lists } )
+    }).then((res)  => res.json())
+      .then((res)=> {
+        if (res.message != 'ERROR') { 
+          this.lists = res.lists
+          localforage.clear()
+          localforage.setItem('all',res.lists)
+          res.lists.forEach(el => {
+            localforage.setItem(el.name,el.todos)
+          })
+
+
+        }else{
+          document.querySelector('header').textContent = 'AUTH FAILED' 
+        }
+      })
+
+    
   },
 
   get Fodos() {
     if (this.filter == true) {
       return this.filterd
-    }else{
+    } 
+    // else if (this.signedIn){
+    //   return this.Rodo
+    // }
+    else {
       return this.todos
     }
   },
@@ -32,10 +88,10 @@ var store = observable({
     function compare(a,b) {
       if (a.name < b.name)
         return -1
-            if (a.name > b.name)
+      if (a.name > b.name)
         return 1
-            return 0
-        }
+      return 0
+    }
     this.todos.replace(this.todos.slice().sort(compare))
     this.updateStorage()
   },
@@ -68,7 +124,7 @@ var store = observable({
   },
 
   move(mover, ref) {
-    console.log(`mover: ${mover}`)
+    console.log(`'mover': ${mover}`)
     console.log(`ref: ${ref}`)
     // console.log(this.todo[ref].name)
     // this.todos.splice(mover, 1)
@@ -79,7 +135,8 @@ var store = observable({
     this.updateStorage()
   },
   reverse(item){
-    this.todos[item].done = this.todos[item].done 
+    console.log(this.todos[item].done)
+    this.todos[item].done = this.todos[item].done == 'false' ? 'true' : 'false'
     this.updateStorage()
   }
 

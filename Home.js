@@ -16,15 +16,23 @@ import Login from './Login'
 export default class Home extends Component {
     constructor(props){
         super(props)
-        localStorage.list ? this.props.store.todos = JSON.parse(localStorage.list) : null
-        document.querySelector('header').textContent = 'TODO APP'
-        console.log(this.props.store.localSignedIn)
+      
+         if(this.props.match.params.user && this.props.match.params.list){
+           this.props.store.hydrate(this.props.match.params.user,this.props.match.params.list)
+         } else {
+            localStorage.list ? this.props.store.todos = JSON.parse(localStorage.list) : null
+         }
+        
+        // document.querySelector('header').textContent = this.props.store.listName
+        // console.log(this.props.store.localSignedIn)
+        console.log(this.props)
         }
        
 
     render() {
         return(
             <div>
+              
                 <Login store={this.props.store} />
                 <Input store={this.props.store} />
                 <Header store={this.props.store}/>

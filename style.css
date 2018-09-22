@@ -84,7 +84,9 @@ a{
     text-decoration: none;
 
 }
-
+header{
+  text-transform:capitalize;
+}
 #signin {
     position: absolute;
     top: 25px;
@@ -264,7 +266,7 @@ main {
 }
 
 #x:hover{
-    color:rgb(214, 6, 6);
+    color:#d60606;
     transform: scale(1.09);
     cursor: pointer;
 }

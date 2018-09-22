@@ -7,7 +7,7 @@ import {observer} from 'mobx-react'
 export default @observer class Signin extends Component {
   constructor(props){
     super(props)
-    document.querySelector('header').textContent = 'Sign In'
+    this.props.store.listName = 'Sign In'
   }
 
   error() {
@@ -31,7 +31,7 @@ export default @observer class Signin extends Component {
           if (res.message != 'Auth Failed') { 
             document.cookie = `jwt=${res.token}`
             this.props.store.signedIn = true
-            localStorage.signedIn = true
+            window.sessionStorage.setItem('signedIn', 'true')
             localStorage.user = res.username
             window.location.href = '/' 
           }else{
@@ -63,6 +63,7 @@ export default @observer class Signin extends Component {
           if (res.message != 'TAKEN') { 
             document.cookie = `jwt=${res.token}`
             this.props.store.signedIn = true
+            window.sessionStorage.setItem('signedIn', 'true')
             window.location.href = '/' 
           }else{
             document.querySelector('header').textContent = 'USERNAME TAKEN' 

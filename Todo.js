@@ -12,8 +12,7 @@ export default class TodoItem extends Component {
     }
     
     reverse(e){
-        this.props.item.done = !this.props.item.done
-        localStorage.list = JSON.stringify(this.props.store.todos)
+        this.props.store.reverse(this.props.index)
 
     }
 
@@ -66,7 +65,7 @@ export default class TodoItem extends Component {
         return(
             <div id={this.props.index} draggable="true"  onDrop={e => this.drop(e)} onDragEnter={(e) => e.target.style.setProperty('border-bottom-color','#0063ff')} onDragOver={e => this.dragOver(e)} onDragLeave={(e) => e.target.style.setProperty('border-bottom-color','#eeeeee')}  onDragEnd={e => this.dragEnd(e)} onDragStart={e => this.dragStart(e)} className='todoitem'> 
                 <div id='content' title='Triple Click To Edit' onBlur={(e) => this.cchange(e)}onDoubleClick={(e) => this.change(e)}>{this.props.item.name}</div> 
-                {this.props.item.done ? <div id='check' onClick={(e) => this.reverse(e)}><i className="im im-check-mark"></i></div> : <div id='xd' onClick={e => this.reverse(e)}></div>}
+                {this.props.item.done == 'true' ? <div id='check' onClick={(e) => this.reverse(e)}><i className="im im-check-mark"></i></div> : <div id='xd' onClick={e => this.reverse(e)}></div>}
                 {this.props.children}
             </div>
         )

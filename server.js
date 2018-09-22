@@ -113,20 +113,107 @@ db.once('open', function() {
 
 
   app.post('/todos', (req, res) => {
-    let username = jwt.decode(req.cookies.jwt.username)
-        console.log(username)
-    User.findOne({ 'username': username }, 'username lists', function (err, person) {
-      if (person.lists) {
-        return res.status(200).json({
-          message: 'OK',
-          lists: person.lists
-        })
-      } else {
-        return res.status(422).json({
-          message: 'ERROR'
-        })
-      }
-    })
+    
+    try {
+      let username = jwt.decode(req.cookies.jwt).username
+      console.log(username)
+      User.findOne({ 'username': username }, 'username lists', function (err, person) {
+        if (person.lists) {
+          return res.status(200).json({
+            message: 'OK',
+            lists: person.lists
+          })
+        } else {
+          return res.status(422).json({
+            message: 'ERROR'
+          })
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  })
+
+
+  app.post('/delete', (req, res) => {
+
+    try {
+      let username = jwt.decode(req.cookies.jwt).username
+      User.findOne({ 'username': username }, 'username lists', function (err, person) {
+        if (person.lists) {
+          person.lists.splice(req.body.list,1)
+          person.lists ? person.lists = [{name: 'TODO APP', todos:[{name:'buy milk',done:"false"}]}] : null
+          person.save((err, updatedPerson) => {
+            if (err) return handleError(err)
+            return res.status(200).json({
+              message: 'OK',
+              lists: person.lists
+            })
+          })
+        } else {
+          return res.status(422).json({
+            message: 'ERROR'
+          })
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  })
+
+
+  app.post('/update', (req, res) => {
+
+    try {
+      let username = jwt.decode(req.cookies.jwt).username
+      User.findOne({ 'username': username }, 'username lists', function (err, person) {
+        if (person.lists) {
+
+          person.lists = req.body.lists
+
+          person.save((err, updatedPerson) => {
+            if (err) return handleError(err)
+            return res.status(200).json({
+              message: 'OK',
+              lists: person.lists
+            })
+          })
+        } else {
+          return res.status(422).json({
+            message: 'ERROR'
+          })
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  })
+
+
+  app.post('/newlist', (req, res) => {
+    let username = jwt.decode(req.cookies.jwt).username
+    console.log(username)
+    try {
+      User.findOne({ 'username': username }, 'username lists', function (err, person) {
+        if (person.lists) {
+          person.lists = [...person.lists, ...req.body.added]
+
+          person.save((err, updatedPerson) => {
+            if (err) return handleError(err)
+            return res.status(200).json({
+              message: 'OK',
+              lists: person.lists
+            })
+          })
+        } else {
+          return res.status(422).json({
+            message: 'ERROR'
+          })
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
   })
 
   app.post('/register', (req, res) => {
