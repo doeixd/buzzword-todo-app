@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "parcel build index.html"
+    "build": "./node_modules/.bin/parcel build index.html"
   },
   "name": "todoapp",
   "description": "now",
