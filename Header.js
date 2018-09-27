@@ -93,16 +93,10 @@ export default class Header extends Component{
         return(
         <F>
             <div id='options' data='' onClick={(e) => this.toggle(e) }> OPTIONS <i className="im im-care-down"></i></div>
-            <div id='save' data='' onClick={(e) => this.toggle(e) }> SAVE/RESTORE <i className="im im-care-down"></i></div>
             <div className='options_controls'>
             <div onClick={() => this.props.store.filterDone() } > DELETE Checked </div>
             <div onClick={() => this.props.store.sortTodos() } > SORT </div>
             <div onClick={(e) => this.otn(e) } > <span id='lab'> Filter </span> <input className='filter' onChange={(e) => this.props.store.filterTodos(e)} onBlur={(e) => this.off(e)}></input> </div>
-            </div>
-            <div className='save_controls'>
-            <input id='listName' placeholder='List Name'></input>
-            <div id='buts' onClick={e => this.loadList(e)}><div>Load</div></div>
-            <div id='buts' onClick={e => this.saveList(e)}><div>SAVE</div></div>
             </div>
         </F>
         ) }

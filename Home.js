@@ -19,6 +19,7 @@ export default class Home extends Component {
       
          if(this.props.match.params.user && this.props.match.params.list){
            this.props.store.hydrate(this.props.match.params.user,this.props.match.params.list)
+           console.log('JUST HYDRATED')
          } else {
             localStorage.list ? this.props.store.todos = JSON.parse(localStorage.list) : null
          }

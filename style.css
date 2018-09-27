@@ -87,11 +87,11 @@ a{
 header{
   text-transform:capitalize;
 }
-#signin {
+#signin>a {
     position: absolute;
     top: 25px;
-    font-size: 17px;
-    line-height: 27px;
+    font-size: 20px;
+    line-height: 30px;
     background-image: linear-gradient(to left, #03A9F4 , #0063ff);
     color: white;
     padding: 0 20px;
@@ -102,7 +102,7 @@ header{
     transition:.25s;
 }
 
-#signin:hover{
+#signin>a:hover{
     cursor:pointer;
     box-shadow:4px 5px 11px #bbbbbb, 0 0 63px -10px #666666;
     transform: scale(1.02)

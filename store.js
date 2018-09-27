@@ -2,14 +2,14 @@ import { observable, toJS, autorun } from 'mobx'
 import localforage from 'localforage'
 
 var store = observable({
-  todos:[
+  todos: [
 
     {
       name: 'buy milk',
       done: "false",
     }
   ],
-    
+
 
 
   n: 0,
@@ -18,15 +18,15 @@ var store = observable({
 
   signedIn: window.sessionStorage.getItem('signedIn') ? true : false,
 
-  lists:[{name:'LOADING...',todos:[{name:'.'},{name:'.'},{name:'.'}]}],
+  lists: [{ name: 'LOADING...', todos: [{ name: '.' }, { name: '.' }, { name: '.' }] }],
 
   filter: false,
 
   filterd: [],
 
-  hydrate(user,list){
+  hydrate(user, list) {
     this.n = list
-    localforage.getItem('all', (err,val) => {
+    localforage.getItem('all', (err, val) => {
       console.log(val)
       // console.log(val[list].name)
       this.todos = val[list].todos
@@ -34,48 +34,52 @@ var store = observable({
       this.listName = val[list].name
       console.log(this.listName)
       // document.querySelector('header').textContent = val[list].name
-      return 
+      return
     })
   },
 
   updateStorage() {
-  
-    localforage.getItem('all').then(all =>{
-      all[this.n].todos = toJS(this.todos) 
-      console.log(all)
-      localforage.setItem(all[this.n].name,toJS(this.todos),()=>{return})
-      localforage.setItem('all',all,()=>{return})
-      this.lists = all
+
+    localforage.getItem('all').then(all => {
+      all[this.n].todos = toJS(this.todos)
+      console.log(`THIS IS ${JSON.stringify(toJS(this.todos))}`)
+      localforage.setItem(all[this.n].name, toJS(this.todos), () => { return })
+      localforage.setItem('all', all).then(su => {
+        this.lists = all
+        console.log(`BATARANG ${JSON.stringify(this.lists)}`)
+        fetch('/update', {
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+          },
+          method: 'POST',
+          body: JSON.stringify({ 'lists': this.lists })
+        }).then((res) => res.json())
+          .then((res) => {
+            if (res.message != 'ERROR') {
+              this.lists = res.lists
+              localforage.clear()
+              localforage.setItem('all', res.lists)
+              res.lists.forEach(el => {
+                localforage.setItem(el.name, el.todos)
+              })
+
+
+            } else {
+              document.querySelector('header').textContent = 'AUTH FAILED'
+            }
+
+      })
     })
-    fetch('/update',{
-      headers:{
-        'Content-Type':'application/json; charset=UTF-8'
-      },
-      method: 'POST',
-      body: JSON.stringify({'lists': this.lists } )
-    }).then((res)  => res.json())
-      .then((res)=> {
-        if (res.message != 'ERROR') { 
-          this.lists = res.lists
-          localforage.clear()
-          localforage.setItem('all',res.lists)
-          res.lists.forEach(el => {
-            localforage.setItem(el.name,el.todos)
-          })
-
-
-        }else{
-          document.querySelector('header').textContent = 'AUTH FAILED' 
-        }
+    
       })
 
-    
+
   },
 
   get Fodos() {
     if (this.filter == true) {
       return this.filterd
-    } 
+    }
     // else if (this.signedIn){
     //   return this.Rodo
     // }
@@ -84,8 +88,8 @@ var store = observable({
     }
   },
 
-  sortTodos(){
-    function compare(a,b) {
+  sortTodos() {
+    function compare(a, b) {
       if (a.name < b.name)
         return -1
       if (a.name > b.name)
@@ -101,8 +105,8 @@ var store = observable({
     this.updateStorage()
   },
 
-  minusTodo(index){
-    this.todos.splice(index,1)
+  minusTodo(index) {
+    this.todos.splice(index, 1)
     this.updateStorage()
   },
 
@@ -113,9 +117,9 @@ var store = observable({
 
   filterTodos(e) {
     this.filter = true
-    this.filterd =[]
-    for ( let item of this.todos){
-      if (item.name.match(RegExp(e.target.value,'g'))) {
+    this.filterd = []
+    for (let item of this.todos) {
+      if (item.name.match(RegExp(e.target.value, 'g'))) {
         this.filterd.push(item)
         console.log(item)
       }
@@ -129,12 +133,12 @@ var store = observable({
     // console.log(this.todo[ref].name)
     // this.todos.splice(mover, 1)
     // this.todos.splice(++ref, 0, this.todos[mover])
-    this.todos.splice(ref,0,this.todos.splice(mover,1)[0])
+    this.todos.splice(ref, 0, this.todos.splice(mover, 1)[0])
     // console.log(this.todos.slice())
     console.log()
     this.updateStorage()
   },
-  reverse(item){
+  reverse(item) {
     console.log(this.todos[item].done)
     this.todos[item].done = this.todos[item].done == 'false' ? 'true' : 'false'
     this.updateStorage()

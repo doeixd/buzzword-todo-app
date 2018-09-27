@@ -79,7 +79,7 @@ export default @observer class Signin extends Component {
     return(
       <div>
         <input placeholder='username' id='username'></input>
-        <input placeholder='password' id='password'></input>
+        <input placeholder='password' type='password' id='password'></input>
         <button onClick={e => this.login(e)}>Submit</button>
         <button id='register' onClick={e => this.register(e)}>Register</button>
 
