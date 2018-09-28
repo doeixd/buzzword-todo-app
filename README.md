@@ -1,7 +1,5 @@
 # Buzzword Todo App
 
-----
-
 
 
 ## Technologies
