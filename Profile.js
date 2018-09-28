@@ -51,7 +51,6 @@ export default @observer class Profile extends Component {
       .then((res)=> {
         if (res.message != 'ERROR') { 
           this.props.store.lists = res.lists
-          console.log(this.props.store.lists)
           res.lists.forEach(el => {
             localforage.setItem(el.name,el.todos)
           })
@@ -75,29 +74,6 @@ export default @observer class Profile extends Component {
           <button id='button' onClick={() => this.newList()}>✚</button>
         </div>
         <h2>Todo Lists :</h2>
-
-        {console.log(this.props.store.lists[0].name)}
-        {/* <Lists store={this.props.store}>
-          {
-            () => {
-              let todos = this.props.store.lists.reduce((accum,itm) => {
-                let todos = itm.todos.reduce( (a,i) =>{ return [...a, i.name] },[] )
-                return [...accum, JSON.stringify(itm.name),todos]
-              },[])
-
-              let mark = todos.map((item, index, arr) => {
-                if (index == 0){
-                  return <Link to={`/${localStorage.user}/${item}`}><h3>{item.slice(1, -1)}</h3></Link>
-                }else if(index<3){
-                  return <div id='listI'>{item}</div>
-                } else {
-                  return
-                }
-              })
-              return mark
-            }
-          }
-        </Lists> */}
 
         { this.props.store.lists.map( (itm,inx) => {
           let desc = (itm.todos.length >= 3) ? [itm.todos[0].name,itm.todos[1].name,itm.todos[2].name] : (itm.todos.length == 2) ? [itm.todos[itm.todos.length-2].name,itm.todos[itm.todos.length-1].name] : [itm.todos[itm.todos.length-1].name] 
@@ -191,18 +167,6 @@ export default @observer class Profile extends Component {
 
 
 class Lists extends Component {
-  constructor(props){
-    super(props)
-    // localforage.iterate(function(value, key, iterationNumber) {
-    //   key != 'all' ? this.setState({key:value}) : null
-    //   console.log([key, value])
-    //   document.getElementById('listcont').appendChild(<div id={iterationNumber}>{value}</div>)
-
-
-    // }).then(function() {})
-    console.log(this.props.desc)
-
-  }
 
   delete(e){
     let list = e.target.id

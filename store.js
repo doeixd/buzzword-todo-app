@@ -27,13 +27,10 @@ var store = observable({
   hydrate(user, list) {
     this.n = list
     localforage.getItem('all', (err, val) => {
-      console.log(val)
-      // console.log(val[list].name)
       this.todos = val[list].todos
 
       this.listName = val[list].name
       console.log(this.listName)
-      // document.querySelector('header').textContent = val[list].name
       return
     })
   },
@@ -80,9 +77,6 @@ var store = observable({
     if (this.filter == true) {
       return this.filterd
     }
-    // else if (this.signedIn){
-    //   return this.Rodo
-    // }
     else {
       return this.todos
     }
@@ -130,11 +124,7 @@ var store = observable({
   move(mover, ref) {
     console.log(`'mover': ${mover}`)
     console.log(`ref: ${ref}`)
-    // console.log(this.todo[ref].name)
-    // this.todos.splice(mover, 1)
-    // this.todos.splice(++ref, 0, this.todos[mover])
     this.todos.splice(ref, 0, this.todos.splice(mover, 1)[0])
-    // console.log(this.todos.slice())
     console.log()
     this.updateStorage()
   },

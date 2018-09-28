@@ -41,7 +41,6 @@ export default class Header extends Component{
 
     loadList(e) {
         let list = document.getElementById('listName').value
-        console.log(list)
         
         if (list) {
         fetch("/saves",{
@@ -60,7 +59,6 @@ export default class Header extends Component{
           .then((myJson) => {
             this.props.store.todos = myJson[0].todos
             this.props.store.updateStorage()
-            console.log(myJson[0].todos)
           });
         } else {
             this.error()

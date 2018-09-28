@@ -5,9 +5,6 @@ import {observer} from 'mobx-react';
 
 @observer
 export default class Top extends Component {
-  
-  
-
   render() {
     return(
       ReactDOM.createPortal(<header contentEditable="true"> {this.props.store.listName}</header>,document.getElementById('topcontainer'))
@@ -16,4 +13,3 @@ export default class Top extends Component {
   }
 }
 
-// ReactDOM.render(document.getElementById('topcontainer'),<Top />)

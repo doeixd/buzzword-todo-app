@@ -22,7 +22,7 @@ export default class TodoItem extends Component {
     }
 
     dragStart(e){
-        console.log(`started dragging element ${e.target.id}`)
+
         e.dataTransfer.setData('text/html', e.target.id)
         document.documentElement.style.setProperty('--in', '-1');
     }
@@ -30,14 +30,13 @@ export default class TodoItem extends Component {
     drop(e) {
         e.preventDefault();
         var data = e.dataTransfer.getData('text/html');
-        console.log(e.target.parentElement)
+
           if (e.target.parentElement.id != 'thelist' ) {
             e.target = e.target.parentElement
             return this.drop(e)
           }
-          console.log(`Place Dropped: ${parseInt(e.target.id)}`)        
+
         this.props.store.move(parseInt(data), parseInt(e.target.id))
-        // e.target.insertAdjacentElement('afterend', document.getElementById(data));
         e.target.style.setProperty('border-bottom-color','#eeeeee')
     }
 
