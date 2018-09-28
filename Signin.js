@@ -33,7 +33,7 @@ export default @observer class Signin extends Component {
             this.props.store.signedIn = true
             window.sessionStorage.setItem('signedIn', 'true')
             localStorage.user = res.username
-            window.location.href = '/' 
+            window.location.href = `/${res.username}/0  ` 
           }else{
             document.querySelector('header').textContent = 'AUTH FAILED' 
           }

@@ -8,10 +8,10 @@
     to{height:20px}
 }
 
+
 body, html{
     margin:0;
     padding:0;
-
 }
 
 body {
@@ -38,7 +38,7 @@ body {
     
 }
 input{
-
+    
     font-family: 'Montserrat';
     font-size: 18px;
     color:#333333;
@@ -55,11 +55,11 @@ header{
     box-shadow:0 2px 8px 0 rgba(0, 0, 0, 0.15);
     color:#393939;
     text-transform:capitalize;
-
+    
 }
 
 #topcontainer{
-        grid-area: header;
+    grid-area: header;
 }
 
 a{
@@ -111,7 +111,7 @@ a{
 }
 
 .options_controls {
-
+    
     margin: auto;
     width: -webkit-fill-available;
     letter-spacing: 1px;
@@ -125,7 +125,7 @@ a{
     z-index: 100;
     transition: max-height .3s linear;
     display: flex;
-
+    
 }
 
 .hidden{
@@ -136,7 +136,7 @@ a{
 }
 
 .options_controls>div {
-
+    
     margin-top: 5px;
     display: inline-block;
     padding:9px;
@@ -155,9 +155,9 @@ a{
     background: #e8e8e8aa
 }
 main {
-      grid-area:content;
-  display: grid;
-  justify-items: center;
+    grid-area:content;
+    display: grid;
+    justify-items: center;
     padding-top:20px;
 }
 
@@ -290,15 +290,15 @@ main {
 #options:hover, #save:hover{
     cursor:pointer;
     color:#047ae8;
-
+    
 }
 
 .im-care-down{
     font-size: 7px;
     columns: #838383;
-
+    
     height:6px;
-
+    
 }
 #filter{
     display:var(--lab)
@@ -363,4 +363,10 @@ main {
     color:#047ae8;
     cursor: pointer;
     background: #e8e8e8aa;
+}
+
+@media screen and (max-width: 600px) {
+  #signin {
+    
+  }
 }

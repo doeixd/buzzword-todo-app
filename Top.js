@@ -7,7 +7,7 @@ import {observer} from 'mobx-react';
 export default class Top extends Component {
   render() {
     return(
-      ReactDOM.createPortal(<header contentEditable="true"> {this.props.store.listName}</header>,document.getElementById('topcontainer'))
+      ReactDOM.createPortal(<header contentEditable="true"> {this.props.content ? this.props.content : this.props.store.listName}</header>,document.getElementById('topcontainer'))
       
     )
   }
