@@ -164,7 +164,7 @@ main {
 #x{
     text-align:right;
 }
-
+#opts{margin:auto;}
 #thelist{
     margin: auto;
     margin-top:20px;

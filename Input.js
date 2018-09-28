@@ -4,7 +4,6 @@ import {observer} from 'mobx-react';
 @observer
 export default class Input extends Component {
     submit() {
-        console.log(this.props.todos)
         document.querySelector('#ibox').value ? this.props.store.addTodo({name:document.querySelector('#ibox').value,done:'false'}) : null
         document.querySelector('#ibox').value = ''
     }
