@@ -19,7 +19,7 @@ export default class Home extends Component {
       
          if(this.props.match.params.user && this.props.match.params.list){
            this.props.store.hydrate(this.props.match.params.user,this.props.match.params.list)
-           localforage.getItem('all' (err, all)=> document.title = all[this.props.match.params.list].name)
+           localforage.getItem('all', (err, all) => document.title = all[this.props.match.params.list].name)
 
          }else if (this.props.store.signedIn) {
              localforage.getItem('all', (err,all) => {this.props.store.todos = all[0].todos})
