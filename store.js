@@ -10,7 +10,7 @@ var store = observable({
     }
   ],
 
-  loginPage: 0;
+  loginPage: 0,
 
   n: 0,
 
