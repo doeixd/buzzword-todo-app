@@ -8,6 +8,7 @@ export default @observer class Signin extends Component {
   constructor(props){
     super(props)
     this.props.store.listName = 'Sign In'
+    this.props.store.loginPage = 1
   }
 
   error() {
@@ -35,7 +36,7 @@ export default @observer class Signin extends Component {
             localStorage.user = res.username
             window.location.href = `/${res.username}/0  ` 
           }else{
-            document.querySelector('header').textContent = 'AUTH FAILED' 
+            this.props.store.listName = 'AUTH FAILED' 
           }
         })
 
@@ -67,7 +68,7 @@ export default @observer class Signin extends Component {
             localStorage.user = res.username
             window.location.href = '/' 
           }else{
-            document.querySelector('header').textContent = 'USERNAME TAKEN' 
+            this.props.store.listName = 'USERNAME TAKEN' 
           }
         })
     

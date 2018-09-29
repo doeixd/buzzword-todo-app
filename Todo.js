@@ -45,8 +45,9 @@ export default class TodoItem extends Component {
   
     }
 
-    change(e) {
+    change(e,v=0) {
         e.target.setAttribute('contenteditable','true')
+        !v ? window.navigator.vibrate(200) : null
 
     }
 
@@ -63,7 +64,7 @@ export default class TodoItem extends Component {
     render() {
         return(
             <div id={this.props.index} draggable="true"  onDrop={e => this.drop(e)} onDragEnter={(e) => e.target.style.setProperty('border-bottom-color','#0063ff')} onDragOver={e => this.dragOver(e)} onDragLeave={(e) => e.target.style.setProperty('border-bottom-color','#eeeeee')}  onDragEnd={e => this.dragEnd(e)} onDragStart={e => this.dragStart(e)} className='todoitem'> 
-                <div id='content' title='Triple Click To Edit' className={this.props.item.done == 'true' ? 'done' : 'not'} onBlur={(e) => this.cchange(e)}onDoubleClick={(e) => this.change(e)}>{this.props.item.name}</div> 
+                <div id='content' title='Triple Click To Edit' className={this.props.item.done == 'true' ? 'done' : 'not'} onBlur={(e) => this.cchange(e)} onDoubleClick={(e) => this.change(e)} onTouch={(e)=> setTimeout(this.change(e,1),1000)}>{this.props.item.name}</div> 
                 {this.props.item.done == 'true' ? <div id='check' onClick={(e) => this.reverse(e)}><i className="im im-check-mark"></i></div> : <div id='xd' onClick={e => this.reverse(e)}></div>}
                 {this.props.children}
             </div>

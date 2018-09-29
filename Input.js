@@ -13,7 +13,7 @@ export default class Input extends Component {
         return (
         <div id='iholder'>
 
-            <input id="ibox" onKeyPress={(e) => e.key == 'Enter' ? this.submit() : null}></input>
+            <input id="ibox" placeholder='TODO NAME' onKeyPress={(e) => e.key == 'Enter' ? this.submit() : null}></input>
             <button id='button' onClick={() => this.submit()}>✚</button>
         </div>
         )

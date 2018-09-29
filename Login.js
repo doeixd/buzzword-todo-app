@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 export default class Login extends Component {
 
     content() {
-        console.log(this.props.store.signedIn)
+       if(this.props.store.loginPage == 1){
+           return ''
+       }
         if (!(this.props.store.signedIn)) {
             return (<Link  to='/login'>LOGIN</Link>) 
         } else {
