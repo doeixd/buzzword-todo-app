@@ -1,4 +1,5 @@
-import React, { Component, Fragment as F } from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import {observer} from 'mobx-react';
 import { Link } from "react-router-dom";
 
@@ -17,13 +18,8 @@ export default class Login extends Component {
     }
 
     render() {
-        return (
-        <F>
-            <div id='signin' href='login.html'> 
-                {this.content()}
-            </div>
-        </F>
-        )
+        return (<div id='signin' href='login.html' >{this.content()}</div>)
     }
-
+    
 }
+ 

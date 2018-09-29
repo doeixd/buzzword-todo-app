@@ -17,7 +17,7 @@ body, html{
 body {
     display:grid;
     grid-template-rows: minmax(100px, 10vh) minmax(80vh,max-content) minmax(95px, 10vh);
-    grid-template-columns: 1fr minmax(500px,35vw) 1fr;
+    grid-template-columns: minmax(10vw,1fr) minmax(80vw,35vw) minmax(10vw,1fr);
     grid-template-areas: "header header header"
                        "space1 content space2"
                        "space1 footer space2";
@@ -158,7 +158,7 @@ main {
     grid-area:content;
     display: grid;
     justify-items: center;
-    padding-top:20px;
+    padding-top:33px;
 }
 
 #x{
@@ -277,6 +277,11 @@ main {
     z-index: var(--in);
 }
 
+.done {
+    color:#8e8e8e;
+    text-decoration: line-through;
+}
+
 #options, #save{
     font-family: 'Roboto Slab';
     font-variant: small-caps;
@@ -366,7 +371,17 @@ main {
 }
 
 @media screen and (max-width: 600px) {
-  #signin {
-    
-  }
+    #signin {
+        position: absolute;
+
+        width: -webkit-fill-available;
+        display: flex;
+        text-align: center;    
+        justify-content: center
+
+    }
+    #signin > a{
+        position: initial;
+        width:fill-avilable;
+    }
 }

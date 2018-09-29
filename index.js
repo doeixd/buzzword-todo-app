@@ -39,7 +39,7 @@ class App extends Component {
     return(
       <Router>
         <div>
-        <Top store={this.props.store}/>
+        <Top store={this.props.store} />
           <Route exact path="/" render={(props)=> <Home {...props} store={this.props.store} /> } />
           <Route exact path="/login" render={()=> <Signin store={this.props.store} /> } />
           <ProtectedRoute exact path='/profile' store={this.props.store} component={Profile} />

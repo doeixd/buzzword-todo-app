@@ -34,7 +34,7 @@ export default class Home extends Component {
     render() {
         return(
             <div>
-                <Login store={this.props.store} />
+                
                 <Input store={this.props.store} />
                 <Header store={this.props.store}/>
                 <TodoList store={this.props.store} />
