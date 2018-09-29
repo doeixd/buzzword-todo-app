@@ -42,6 +42,7 @@ input{
     font-family: 'Montserrat';
     font-size: 18px;
     color:#333333;
+    -webkit-appearance: none;
 }
 
 header{
@@ -176,7 +177,7 @@ main {
     height: 40px;
     margin-right: 25px;
     border-radius: 5px;
-    border: 0px solid #cecece;
+    /* border: 1px solid #cecece; */
     /* border-bottom: 2px solid #b1b1b1; */
     width: 265px;
     /* border-top: 1px solid #cccccc; */
@@ -185,6 +186,7 @@ main {
     margin-bottom:5px;
     padding-left: 10px;
     display: inline-flex;
+    -webkit-appearance: none;
 }
 
 #ibox:hover{
