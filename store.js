@@ -101,6 +101,7 @@ var store = observable({
 
   minusTodo(index) {
     this.todos.splice(index, 1)
+    window.navigator.vibrate(100)
     this.updateStorage()
   },
 
