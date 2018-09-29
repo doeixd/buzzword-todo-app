@@ -13,6 +13,7 @@ export default class TodoItem extends Component {
     
     reverse(e){
         this.props.store.reverse(this.props.index)
+        window.navigator.vibrate(100)
 
     }
 
@@ -42,6 +43,7 @@ export default class TodoItem extends Component {
 
     dragOver(e) {
         e.preventDefault()
+        window.navigator.vibrate(100)
   
     }
 
