@@ -15,7 +15,7 @@ export default @observer class Signin extends Component {
   }
 
   login(e){
-    let password = document.getElementById('password').value
+    let password = document.getElementById('password').value.toLowerCase()
     let username = document.getElementById('username').value
         
     if (username && password) {
