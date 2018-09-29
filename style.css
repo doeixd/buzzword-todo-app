@@ -17,7 +17,7 @@ body, html{
 body {
     display:grid;
     grid-template-rows: minmax(100px, 10vh) minmax(80vh,max-content) minmax(95px, 10vh);
-    grid-template-columns: minmax(10vw,1fr) minmax(80vw,35vw) minmax(10vw,1fr);
+    grid-template-columns: minmax(5vw,1fr) minmax(90vw,35vw) minmax(5vw,1fr);
     grid-template-areas: "header header header"
                        "space1 content space2"
                        "space1 footer space2";
