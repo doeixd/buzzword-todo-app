@@ -12,7 +12,7 @@ export default @observer class Signin extends Component {
   }
 
   error() {
-    alert('')
+    alert('ERROR, Did you enter a username and password?')
   }
 
   login(e){
