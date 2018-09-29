@@ -142,7 +142,7 @@ db.once('open', function() {
       User.findOne({ 'username': username }, 'username lists', function (err, person) {
         if (person.lists) {
           person.lists.splice(req.body.list,1)
-          person.lists ? person.lists = [{name: 'TODO APP', todos:[{name:'buy milk',done:"false"}]}] : null
+          person.lists.length == 0 ? person.lists = [{name: 'TODO APP', todos:[{name:'buy milk',done:"false"}]}] : null
           person.save((err, updatedPerson) => {
             if (err) return handleError(err)
             return res.status(200).json({
