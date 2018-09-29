@@ -96,7 +96,7 @@ var store = observable({
 
   addTodo(todo) {
     this.todos.push(todo)
-    window.navigator.vibrate(100)
+    window.navigator.vibrate([100, 30, 20 ])
     this.updateStorage()
   },
 

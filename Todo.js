@@ -43,7 +43,7 @@ export default class TodoItem extends Component {
 
     dragOver(e) {
         e.preventDefault()
-        window.navigator.vibrate(100)
+       
   
     }
 
