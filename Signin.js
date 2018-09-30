@@ -71,9 +71,9 @@ export default @observer class Signin extends Component {
             this.props.store.listName = 'USERNAME TAKEN' 
           }
         })
-    
+  
     } else{ 
-      this.error()
+      this.props.store.listName = 'Register'
     }
   }
 
