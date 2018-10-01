@@ -107,7 +107,7 @@ var store = observable({
   },
 
   filterDone() {
-    this.todos = this.todos.filter(item => item.done == false)
+    this.todos = this.todos.filter(item => item.done == 'false')
     this.updateStorage()
   },
 

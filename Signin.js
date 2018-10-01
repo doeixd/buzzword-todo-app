@@ -9,6 +9,7 @@ export default @observer class Signin extends Component {
     super(props)
     this.props.store.listName = 'Sign In'
     this.props.store.loginPage = 1
+    window.title = 'Sign In'
   }
 
   error() {

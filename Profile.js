@@ -9,7 +9,7 @@ export default @observer class Profile extends Component {
     super(props)
     this.props.store.listName = `${localStorage.user}'s Profile`
     this.getLists('e')
-
+      window.title = `${localStorage.user}'s Profile`
   }
 
   newList(e){
@@ -76,7 +76,7 @@ export default @observer class Profile extends Component {
         <h2>Todo Lists :</h2>
 
         { this.props.store.lists.map( (itm,inx) => {
-          let desc = (itm.todos.length >= 3) ? [itm.todos[0].name,itm.todos[1].name,itm.todos[2].name] : (itm.todos.length == 2) ? [itm.todos[itm.todos.length-2].name,itm.todos[itm.todos.length-1].name] : [itm.todos[itm.todos.length-1].name] 
+          let desc = (itm.todos.length >= 3) ? [itm.todos[0].name, itm.todos[1].name, itm.todos[2].name] : (itm.todos.length == 2) ? [itm.todos[itm.todos.length - 2].name, itm.todos[itm.todos.length - 1].name] : (itm.todos.length == 1) ? [itm.todos[itm.todos.length-1].name] : [] 
           return <Lists store={this.props.store} key={inx} inx={inx} name={itm.name} desc={desc} />
         })
 
