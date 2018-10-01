@@ -249,7 +249,8 @@ db.once('open', function() {
         const token = jwt.sign({'username': username}, secret, {})
         res.status(200).json({
           message: 'User Created',
-          token
+          token,
+          username
         })
       }
     }
