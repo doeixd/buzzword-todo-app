@@ -267,6 +267,10 @@ main {
     transition:.5s;
     
 }
+#root{
+    max-width: 400px;
+}
+
 
 :root {
     --hit: #eeeeee; 
