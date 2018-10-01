@@ -14,6 +14,8 @@ var store = observable({
 
   n: 0,
 
+  reg: false,
+
   listName: 'TODO APP',
 
   signedIn: window.sessionStorage.getItem('signedIn') ? true : false,

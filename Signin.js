@@ -50,7 +50,7 @@ export default @observer class Signin extends Component {
 
   register(e){
     let password = document.getElementById('password').value
-    let username = document.getElementById('username').value
+    let username = document.getElementById('username').value.toLowerCase()
         
     if (username && password) {
       fetch('/register',{
@@ -75,6 +75,7 @@ export default @observer class Signin extends Component {
   
     } else{ 
       this.props.store.listName = 'Register'
+      this.props.store.reg = true
     }
   }
 
@@ -83,7 +84,7 @@ export default @observer class Signin extends Component {
       <div>
         <input placeholder='username' id='username'></input>
         <input placeholder='password' type='password' id='password'></input>
-        <button onClick={e => this.login(e)}>Submit</button>
+        { this.props.store.reg ? '' : <button onClick={e => this.login(e)}>Submit</button> }
         <button id='register' onClick={e => this.register(e)}>Register</button>
 
         <style jsx>{`
