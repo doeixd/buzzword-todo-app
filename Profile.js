@@ -204,7 +204,8 @@ class Lists extends Component {
         <Link to={`${localStorage.user}/${this.props.inx}/`} >
           <h3>{this.props.name}</h3>
           {
-            this.props.desc.map((itm, ndx) => {
+            this.props.desc.map((itm, ndx, arr) => {
+              if (arr.length == 0) { return <div key={ndx} id='listI' className='i'>'No Items Presant'</div>}
               return (<div key={ndx} id='listI'>{itm}</div>)
             })
           }
@@ -215,6 +216,9 @@ class Lists extends Component {
         <style jsx>{` 
           h3{
             font-size:22px;
+          }
+          .i{
+            font-style: italic;
           }
           .dekete:hover{
             stroke:#E70707;
