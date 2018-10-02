@@ -10,7 +10,7 @@ export default @observer class Profile extends Component {
     this.props.store.listName = `${localStorage.user}'s Profile`
     this.getLists('e')
       window.title = `${localStorage.user}'s Profile`
-    this.props.store.userPage == 1
+    this.props.store.userPage = 1
   }
 
   newList(e){
