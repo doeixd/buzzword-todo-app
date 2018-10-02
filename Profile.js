@@ -241,6 +241,7 @@ class Lists extends Component {
             padding-bottom: 10px;
             margin-top: 10px;
             transition: .2s;
+            overflow: hidden;
           }
           .listcont:hover{
             border-bottom: 2px solid #0063FF;
