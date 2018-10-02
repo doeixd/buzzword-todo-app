@@ -8,7 +8,8 @@ import localforage from 'localforage'
 export default class Login extends Component {
 
     logout(){
-        window.sessionStorage.signedIn = 0
+        window.sessionStorage.removeItem('signedIn')
+        localStorage.removeItem('user')
         this.signedIn = false
         console.log('LOGGED OUT')
         localforage.removeItem('all').then(()=> window.location.href = '/')
