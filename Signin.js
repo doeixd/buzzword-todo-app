@@ -67,7 +67,7 @@ export default @observer class Signin extends Component {
             this.props.store.signedIn = true
             window.sessionStorage.setItem('signedIn', 'true')
             localStorage.user = res.username
-            localforage.getItem('alist').then(list => localforage.setItem('all', list)).then(() => window.location.href = '/')
+            localforage.getItem('alist').then(list => localforage.setItem('all', {name: 'TODO APP', todos:[list] })).then(() => window.location.href = '/')
              
             
           }else{
