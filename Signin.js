@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './style.css'
 import {observer} from 'mobx-react'
-
+import localforage from 'localforage'
 
 
 export default @observer class Signin extends Component {
