@@ -29,7 +29,7 @@ export default class Home extends Component {
          }else {
             localStorage.list ? this.props.store.todos = JSON.parse(localStorage.list) : null
 
-            localforage.getItem('alist').then((list) => this.props.store.todos = list)
+            localforage.getItem('alist').then((list) => list ? this.props.store.todos = list : null)
 
          }
 
