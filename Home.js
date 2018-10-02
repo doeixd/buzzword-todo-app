@@ -16,7 +16,7 @@ import localforage from 'localforage'
 export default class Home extends Component {
     constructor(props){
         super(props)
-      
+        this.props.store.listName = 'TODO APP'
          if(this.props.match.params.user && this.props.match.params.list){
            this.props.store.hydrate(this.props.match.params.user,this.props.match.params.list)
            localforage.getItem('all', (err, all) => document.title = all[this.props.match.params.list].name)
