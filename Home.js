@@ -18,6 +18,7 @@ export default class Home extends Component {
         super(props)
         this.props.store.listName = 'TODO APP'
         this.props.store.loginPage = 0
+        this.props.store.reg = 0
          if(this.props.match.params.user && this.props.match.params.list){
            this.props.store.hydrate(this.props.match.params.user,this.props.match.params.list)
            localforage.getItem('all', (err, all) => document.title = all[this.props.match.params.list].name)
