@@ -38,7 +38,9 @@ var store = observable({
   },
 
   updateStorage() {
-
+    if(!this.signedIn){
+      localforage.setItem('alist', toJS(this.todos))
+    }
     localforage.getItem('all').then(all => {
       all[this.n].todos = toJS(this.todos)
       console.log(`THIS IS ${JSON.stringify(toJS(this.todos))}`)
