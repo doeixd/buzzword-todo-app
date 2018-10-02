@@ -10,6 +10,7 @@ export default @observer class Profile extends Component {
     this.props.store.listName = `${localStorage.user}'s Profile`
     this.getLists('e')
       window.title = `${localStorage.user}'s Profile`
+    this.props.store.userPage == 1
   }
 
   newList(e){
@@ -70,7 +71,7 @@ export default @observer class Profile extends Component {
     return(
       <div id='cont'>
         <div id='opts'>
-          <input placeholder='LIST NAME' id='new'></input>
+          <input placeholder='LIST NAME' id='new' onKeyPress={(e) => e.key == 'Enter' ? this.newList() : null}></input>
           <button id='button' onClick={() => this.newList()}>✚</button>
         </div>
         <h2>Todo Lists :</h2>
