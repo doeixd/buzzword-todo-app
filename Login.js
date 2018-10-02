@@ -10,7 +10,8 @@ export default class Login extends Component {
     logout(){
         window.sessionStorage.signedIn = 0
         this.signedIn = false
-        localforage.removeItem('all').then(()=> window.href = '/')
+        console.log('LOGGED OUT')
+        localforage.removeItem('all').then(()=> window.location.href = '/')
     }
 
     content() {

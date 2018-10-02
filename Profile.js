@@ -33,7 +33,7 @@ export default @observer class Profile extends Component {
           })
 
         }else{
-          document.querySelector('header').textContent = 'AUTH FAILED' 
+          this.props.store.listName = 'AUTH FAILED' 
         }
       })
 
@@ -59,7 +59,7 @@ export default @observer class Profile extends Component {
           // this.hydrate()
 
         }else{
-          document.querySelector('header').textContent = 'AUTH FAILED' 
+          this.props.store.listName = 'AUTH FAILED' 
         }
       })
     
@@ -193,7 +193,7 @@ class Lists extends Component {
 
 
         }else{
-          document.querySelector('header').textContent = 'AUTH FAILED' 
+          this.props.store.listName = 'AUTH FAILED' 
         }
       })
 
