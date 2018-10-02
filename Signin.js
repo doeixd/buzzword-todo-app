@@ -17,8 +17,8 @@ export default @observer class Signin extends Component {
   }
 
   login(e){
-    let password = document.getElementById('password').value.toLowerCase()
-    let username = document.getElementById('username').value
+    let password = document.getElementById('password').value
+    let username = document.getElementById('username').value.toLowerCase()
         
     if (username && password) {
       fetch('/login',{
@@ -67,7 +67,9 @@ export default @observer class Signin extends Component {
             this.props.store.signedIn = true
             window.sessionStorage.setItem('signedIn', 'true')
             localStorage.user = res.username
-            window.location.href = '/' 
+            localforage.getItem('alist').then(list => localforage.setItem('all', list)).then(() => window.location.href = '/')
+             
+            
           }else{
             this.props.store.listName = 'USERNAME TAKEN' 
           }
