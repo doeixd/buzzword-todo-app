@@ -14,6 +14,8 @@ var store = observable({
 
   n: 0,
 
+  userPage: 0,
+
   reg: false,
 
   listName: 'TODO APP',
