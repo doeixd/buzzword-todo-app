@@ -25,7 +25,7 @@ export default class Home extends Component {
            localforage.getItem('all', (err, all) => document.title = all[this.props.match.params.list].name)
 
          }else if (this.props.store.signedIn) {
-             localforage.getItem('all', (err,all) => {this.props.store.todos = all[0].todos console.log(all[0].todos)})
+             localforage.getItem('all', (err,all) => {this.props.store.todos = all[0].todos; console.log(all[0].todos)})
 
          }else {
 
