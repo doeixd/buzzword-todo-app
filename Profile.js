@@ -200,58 +200,60 @@ class Lists extends Component {
   }
 
   render(){
-    return (
-      <div className='listcont'>
-        <Link to={`${localStorage.user}/${this.props.inx}/`} >
+    return <div className="listcont">
+        <Link to={`${localStorage.user}/${this.props.inx}/`}>
           <h3>{this.props.name}</h3>
-          {
-            this.props.desc.map((itm, ndx, arr) => {
-              if (arr.length == 0) { return <div key={ndx} id='listI' className='i'>'No Items Presant'</div>}
-              return (<div key={ndx} id='listI'>{itm}</div>)
-            })
-          }
+          {this.props.desc.map((itm, ndx, arr) => {
+            if (arr.length == 0) {
+              return <div key={ndx} id="listI" className="i">
+                  'No Items Presant'
+                </div>;
+            }
+            return <div key={ndx} id="listI">
+                {itm}
+              </div>;
+          })}
         </Link>
-        <div id={this.props.inx} className='dekete' onClick={(e)=> this.delete(e)}><svg width="20" height="20"  id={this.props.inx} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" fillRule="evenodd" clipRule="evenodd"><path id={this.props.inx} d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z"/></svg></div>
-      
-      
-        <style jsx>{` 
-          h3{
-            font-size:22px;
+        <div id={this.props.inx} className="dekete" onClick={e => this.delete(e)}>
+          <svg width="20" height="20" id={this.props.inx} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" fillRule="evenodd" clipRule="evenodd">
+            <path id={this.props.inx} d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
+          </svg>
+        </div>
+
+        <style jsx>{`
+          h3 {
+            font-size: 22px;
           }
-          .i{
+          .i {
             font-style: italic;
           }
-          .dekete:hover{
-            stroke:#E70707;
-            transform:scale(1.08);
-            cursor:pointer;
+          .dekete:hover {
+            stroke: #e70707;
+            transform: scale(1.08);
+            cursor: pointer;
           }
-          .dekete{
-            transition:.2s;
+          .dekete {
+            transition: 0.2s;
           }
-          #listI{
-            display:inline;
-            padding-right:10px;
+          #listI {
+            display: inline;
+            padding-right: 10px;
           }
-          .listcont{
+          .listcont {
             display: grid;
             grid-template-columns: 5fr 1fr;
             align-items: center;
-            font-family:'Montserrat';
+            font-family: "Montserrat";
             border-bottom: 2px solid #eaeaea;
             padding-bottom: 10px;
             margin-top: 10px;
-            transition: .2s;
-            overflow: hidden;
+            transition: 0.2s;
+            word-break: break-all;
           }
-          .listcont:hover{
-            border-bottom: 2px solid #0063FF;
-          }
-          
-          
-          `}</style>
-      </div>
-    )
+          .listcont:hover {
+            border-bottom: 2px solid #0063ff;
+          }`}</style>
+      </div>;
   }
 
 }

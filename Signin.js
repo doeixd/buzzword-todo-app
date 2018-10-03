@@ -35,7 +35,7 @@ export default @observer class Signin extends Component {
             this.props.store.signedIn = true
             window.sessionStorage.setItem('signedIn', 'true')
             localStorage.user = res.username
-            window.location.href = `/${res.username}/0  ` 
+            window.location.href = `/profile ` 
           }else{
             this.props.store.listName = 'AUTH FAILED' 
           }
@@ -68,10 +68,10 @@ export default @observer class Signin extends Component {
             window.sessionStorage.setItem('signedIn', 'true')
             localStorage.user = res.username
             localforage.getItem('alist')
-            .then(list => localforage.setItem('all',[{name: 'TODO APP', todos:[...list] } ] ))
+            .then(list => list ? localforage.setItem('all',[{name: 'TODO APP', todos:[list] } ] ) : null )
             .then(() => {
               this.props.store.updateStorage()
-              window.location.href = '/'
+              window.location.href = '/profile'
             })
              
             

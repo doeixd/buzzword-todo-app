@@ -20,7 +20,8 @@ export default class Home extends Component {
         this.props.store.loginPage = 0
         this.props.store.reg = 0
         this.props.store.userPage = 0
-         if(this.props.match.params.user && this.props.match.params.list){
+         
+        if(this.props.match.params.user && this.props.match.params.list){
            this.props.store.hydrate(this.props.match.params.user,this.props.match.params.list)
            localforage.getItem('all', (err, all) => document.title = all[this.props.match.params.list].name)
 
@@ -29,7 +30,7 @@ export default class Home extends Component {
 
          }else {
 
-            localforage.getItem('alist').then((list) => list ? this.props.store.todos = list : null)
+            localforage.getItem('alist').then((list) => list ? this.props.store.todos = list : console.log(list))
 
          }
 

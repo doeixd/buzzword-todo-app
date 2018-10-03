@@ -16,11 +16,11 @@ body, html{
 
 body {
     display:grid;
-    grid-template-rows: minmax(100px, 10vh) minmax(80vh,max-content) minmax(95px, 10vh);
+    grid-template-rows: minmax(min-content, 10vh) minmax(80vh,max-content) minmax(95px, 10vh);
     grid-template-columns: minmax(1vw,1fr) minmax(98vw,35vw) minmax(1vw,1fr);
     grid-template-areas: "header header header"
-                       "space1 content space2"
-                       "space1 footer space2";
+                         "space1 content space2"
+                         "space1 footer space2";
     width:100vw;
     height:100vh;
     max-height: fit-content; 

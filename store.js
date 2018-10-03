@@ -32,9 +32,7 @@ var store = observable({
     this.n = list
     localforage.getItem('all', (err, val) => {
       this.todos = val[list].todos
-
       this.listName = val[list].name
-      console.log(this.listName)
       return
     })
   },
@@ -45,11 +43,9 @@ var store = observable({
     }
     localforage.getItem('all').then(all => {
       all[this.n].todos = toJS(this.todos)
-      console.log(`THIS IS ${JSON.stringify(toJS(this.todos))}`)
       localforage.setItem(all[this.n].name, toJS(this.todos), () => { return })
       localforage.setItem('all', all).then(su => {
         this.lists = all
-        console.log(`BATARANG ${JSON.stringify(this.lists)}`)
         fetch('/update', {
           headers: {
             'Content-Type': 'application/json; charset=UTF-8'
