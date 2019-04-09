@@ -8,22 +8,22 @@
     to{height:20px}
 }
 
-
 body, html{
     margin:0;
     padding:0;
+
 }
 
 body {
     display:grid;
-    grid-template-rows: minmax(min-content, 10vh) minmax(80vh,max-content) minmax(95px, 10vh);
-    grid-template-columns: minmax(1vw,1fr) minmax(98vw,35vw) minmax(1vw,1fr);
+    grid-template-rows: minmax(100px, 10vh) minmax(80vh,max-content) minmax(95px, 10vh);
+    grid-template-columns: 1fr minmax(500px,35vw) 1fr;
     grid-template-areas: "header header header"
-                         "space1 content space2"
-                         "space1 footer space2";
+                       "space1 content space2"
+                       "space1 footer space2";
     width:100vw;
     height:100vh;
-    max-height: fit-content;
+    max-height: fit-content; 
 }
 
 .itl {
@@ -31,18 +31,17 @@ body {
     font-family: sans-serif;
     border-bottom: 1px dashed #CCCCCC;
     width: 12vw;
-    height: 7vh;
-    line-height: 7vh;
+    height: 7vh;                                                        
+    line-height: 7vh;   
     display: grid;
-    grid-template-columns: auto 15px;
-
+    grid-template-columns: auto 15px; 
+    
 }
 input{
 
     font-family: 'Montserrat';
     font-size: 18px;
     color:#333333;
-    -webkit-appearance: none;
 }
 
 header{
@@ -56,11 +55,11 @@ header{
     box-shadow:0 2px 8px 0 rgba(0, 0, 0, 0.15);
     color:#393939;
     text-transform:capitalize;
-    overflow: hidden;
+
 }
 
 #topcontainer{
-    grid-area: header;
+        grid-area: header;
 }
 
 a{
@@ -156,21 +155,21 @@ a{
     background: #e8e8e8aa
 }
 main {
-    grid-area:content;
-    display: grid;
-    justify-items: center;
-    padding-top:33px;
+      grid-area:content;
+  display: grid;
+  justify-items: center;
+    padding-top:20px;
 }
 
 #x{
     text-align:right;
 }
-#opts{margin:auto;}
+
 #thelist{
     margin: auto;
     margin-top:20px;
     /* width: fit-content; */
-
+    
 }
 
 #ibox{
@@ -186,7 +185,6 @@ main {
     margin-bottom:5px;
     padding-left: 10px;
     display: inline-flex;
-    -webkit-appearance: none;
 }
 
 #ibox:hover{
@@ -217,7 +215,7 @@ main {
 
 #button:hover{
     cursor:pointer;
-    /* background-color:#31b3ff;
+    /* background-color:#31b3ff;  
     color:white;  */
     box-shadow:3px 5px 7px #bbbbbb, 0 0 39px -9px #666666;
     transform: scale(1.02)
@@ -265,15 +263,11 @@ main {
     top:-18px;
     margin:auto;
     transition:.5s;
-
+    
 }
-#root{
-    max-width: 400px;
-}
-
 
 :root {
-    --hit: #eeeeee;
+    --hit: #eeeeee; 
     --in:initial;
     --filt: none;
     --lab: inline-block;
@@ -281,11 +275,6 @@ main {
 
 #content {
     z-index: var(--in);
-}
-
-.done {
-    color:#8e8e8e;
-    text-decoration: line-through;
 }
 
 #options, #save{
@@ -346,7 +335,7 @@ main {
     transition: max-height .3s linear;
     margin: auto;
     max-height: 0px;
-
+    
 }
 
 #submit{
@@ -374,23 +363,4 @@ main {
     color:#047ae8;
     cursor: pointer;
     background: #e8e8e8aa;
-}
-
-@media screen and (max-width: 600px) {
-    #signin {
-        position: absolute;
-
-        width: -webkit-fill-available;
-        display: flex;
-        text-align: center;
-        justify-content: center
-
-    }
-    #signin > a{
-        position: initial;
-        width:fill-avilable;
-    }
-    #ibox{
-        width:55vw;
-    }
 }

@@ -24,7 +24,7 @@ var db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
   var list = new Schema({
-    name:  String,
+    name:  String,+
     todos: [{ name: String, done: String }],
   })
   
@@ -38,7 +38,7 @@ db.once('open', function() {
   var User = mongoose.model('User', user)
 
   app.use(passport.initialize())
-  app.use(compression())
+   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(cookieParser())
@@ -81,10 +81,8 @@ db.once('open', function() {
     User.findOne({ 'username': username }, 'username password', function (err, person) {
       try{
         if (person)  {
-          console.log(person)
           bcrypt.compare(password,person.password)
             .then(test => {
-              console.log(test)
               if (test) {
                 const secret = 'SECRET_KEY'
                 const token = jwt.sign({'username': username}, secret, {})

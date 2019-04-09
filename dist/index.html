@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            TODO
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#F1f1f1">
+        <link rel="shortcut icon" href="/icon.83aa3da3.png" type="image/x-icon">
+        <link rel="manifest" href="/manifest.f032aeb4.webmanifest">
+    <link rel="stylesheet" href="/buzzword-todo-appp.e31bb0bc.css"></head>
+    <body>
+        <div id="topcontainer"></div>
+        
+        <main>
+            <div id="root"></div>
+        </main>
+
+        <footer>
+
+        </footer>
+    </body>
+    <script src="/dpoly.56fb0c7d.js"></script>
+    <script src="/buzzword-todo-appp.e31bb0bc.js"></script>
+    <script>if ('serviceWorker' in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log('active service worker found, no need to register');
+  } else {
+    //Register the ServiceWorker
+    navigator.serviceWorker.register("/sw.js", {
+      scope: './'
+    }).then(function (reg) {
+      console.log('Service worker has been registered for scope:' + reg.scope);
+    });
+  }
+}</script>
+
+ </html>

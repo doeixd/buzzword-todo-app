@@ -11,7 +11,6 @@ export default class Login extends Component {
         window.sessionStorage.removeItem('signedIn')
         localStorage.removeItem('user')
         this.signedIn = false
-        console.log('LOGGED OUT')
         localforage.removeItem('all').then(()=> window.location.href = '/')
     }
 
