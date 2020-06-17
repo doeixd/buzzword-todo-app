@@ -9,7 +9,7 @@ var mongoose = require('mongoose')
 const JwtStrategy = require('passport-jwt').Strategy
 const opts = {}
 opts.jwtFromRequest = req => (req.cookies.jwt)
-opts.secretOrKey = 'SECRET_KEY' 
+opts.secretOrKey = 'SECRET_KEY'
 
 
 const passport = require('passport')
@@ -24,17 +24,17 @@ var db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function() {
   var list = new Schema({
-    name:  String,+
+    name:  String,
     todos: [{ name: String, done: String }],
   })
-  
-  
+
+
   var user = new Schema({
     username: String,
     password: String,
     lists:[list]
   })
-  
+
   var User = mongoose.model('User', user)
 
   app.use(passport.initialize())
@@ -53,9 +53,9 @@ db.once('open', function() {
   // })
 
   passport.use( new JwtStrategy(opts, (jwt_payload, done) => {
-    
+
     User.findOne({ 'username':  jwt_payload.username }, 'username', function (err) {
-      console.log(jwt_payload)  
+      console.log(jwt_payload)
       if (err) {
         return done(err, false)
       }
@@ -77,7 +77,7 @@ db.once('open', function() {
   app.post('/login', (req, res) => {
     let { username, password } = req.body
     console.log(`THIS IS ${username} and ${password}`)
-        
+
     User.findOne({ 'username': username }, 'username password', function (err, person) {
       try{
         if (person)  {
@@ -99,19 +99,19 @@ db.once('open', function() {
             } )
             .catch(err => {
               handleError(err)
-            })  
+            })
         } else {return res.status(401).json({ message: 'Auth Failed' })}
-      } 
+      }
       catch (err){
         console.log(err)
-      }  
+      }
     })
 
   })
 
 
   app.post('/todos', (req, res) => {
-    
+
     try {
       let username = jwt.decode(req.cookies.jwt).username
       console.log(username)
@@ -215,7 +215,7 @@ db.once('open', function() {
   })
 
   app.post('/register', (req, res) => {
-  
+
     async function go () {
       let { username, password } = req.body
 
@@ -232,9 +232,9 @@ db.once('open', function() {
           return false
         }
       }).catch((err) => {console.log(err)})
-  
+
       console.log(existingUser)
-      
+
       if (!existingUser) {
         console.log('creating user')
         User.create({
@@ -254,28 +254,28 @@ db.once('open', function() {
     }
     go()
   })
-    
-    
+
+
   /* final catch-all route to index.html defined last */
-    
+
   app.get('/login',express.static(__dirname + '/dist') ,(req, res) => {
     res.sendFile(__dirname, + '/dist/index.html')
   })
-    
-  // app.get('/profile', passport.authenticate('jwt', { session: false }), function (req, res)  {  
+
+  // app.get('/profile', passport.authenticate('jwt', { session: false }), function (req, res)  {
   //   return res.status(200).send('YAY! this is a protected Route')
   // })
 
   app.get('/profile', express.static(__dirname + '/dist'), (req, res) => {
     res.sendFile(__dirname + '/dist/index.html')
   })
-    
-  
+
+
   app.get('/*', express.static(__dirname + '/dist'), (req, res) => {
     res.sendFile(__dirname + '/dist/index.html')
   })
-    
-    
+
+
   app.listen(80, () => console.log('Example app listening on port 80!'))
 
 
