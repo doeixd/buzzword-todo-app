@@ -8,7 +8,7 @@
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.3.0",
     "local": "^0.3.3",
     "localforage": "^1.7.2",
